@@ -1,0 +1,92 @@
+1.  OS ka main purpose kya hota hai?
+    OS ek middleman hai — user aur hardware ke beech. Iska kaam hai programs ko efficiently run karne do aur 
+    resources (CPU, memory, disk) manage karo.
+    Interview Tip: Yaad rakho: OS = Manager. Hardware = Factory. User = Customer.
+
+2.  Kernel kya hota hai?
+    Kernel OS ka core hota hai — ek bridge jo applications aur hardware ke beech kaam karta hai. 
+    Ye CPU time, memory, aur device drivers manage karta hai. System calls ke through applications kernel se baat karte hain.
+    Interview Tip: Analogy: OS = hotel, Kernel = hotel manager jo har department control karta hai.
+
+3.  OS aur Kernel mein kya difference hai?
+    OS complete software package hai (kernel + shell + GUI + utilities) . Kernel sirf OS ka core part hai. 
+    OS user aur hardware ke beech interface provide karta hai; Kernel specifically hardware aur applications ke beech bridge hai.
+    Interview Tip: Yaad rakho: Kernel ⊂ OS. Kernel always runs in privileged mode.
+
+4.  Monolithic kernel kya hota hai?
+    Monolithic kernel mein sab kuch — CPU scheduling, memory management, file system, drivers — ek hi address space mein hota hai.
+    Iska faida ye hai ki sab fast hota hai (no inter-process communication needed), lekin koi bhi bug poore OS ko crash kar sakta hai.
+    Linux iska example hai.
+    Interview Tip: vs Microkernel: Monolithic = sab ek ghar mein, Microkernel = alag alag compartments.
+
+5.  Multiprogramming kya hota hai?
+    Multiple programs ko ek saath main memory mein rakhna taaki CPU hamesha kuch na kuch execute kare. Agar ek program I/O wait 
+    mein hai toh CPU doosre ko execute kare. Goal = CPU utilization maximize karna.
+    Interview Tip: vs Multitasking: Multiprogramming = multiple programs memory mein. Multitasking = rapid switching (user interaction ke saath).
+
+6.  Time-sharing system kya hota hai?
+    Multiprogramming ka logical extension jahan CPU itni tezi se switch karta hai ki lagta hai multiple users simultaneously use kar
+    rahe hain. Har user ko lagta hai CPU sirf unka hai. Modern OS sab time-sharing use karte hain.
+    Interview Tip: Analogy: ATM queue — sab ko lagta hai ATM unka hai, actually ek ek karke serve hota hai.
+
+7.  Multitasking kya hota hai?
+    Multiple tasks concurrently run ho rahi hain ek hi system mein, CPU share karke. OS ki feature hai.
+    Multithreading ek single process ki feature hai; Multitasking OS level pe hoti hai.
+    The CPU rapidly switches between tasks, giving each a small time slice, so they appear to run simultaneously.
+    Interview Tip: Difference: Multithreading = ek process ke andar. Multitasking = multiple processes OS level pe.
+
+8.  Interrupts kya hote hain?
+    Hardware ya software signal jo CPU ko batata hai ki koi urgent kaam hai. CPU current process rok ke Interrupt Service Routine (ISR)
+    execute karta hai phir wapas aata hai. Hardware interrupt (keyboard, disk) aur Software interrupt (trap, exception).
+    Interview Tip: Trap vs Interrupt: Interrupt = hardware signal. Trap = software interrupt (usually error ya system call).
+
+9.  Trap aur Trapdoor kya hota hai?
+    Trap = software interrupt, usually error condition se trigger hota hai (divide by zero, invalid memory access).
+    Non-maskable aur highest priority.
+    Trapdoor = secret unauthorized entry point in program, intentionally left by developer for backdoor access — security vulnerability.
+    Interview Tip: Security alert: Trapdoor = backdoor = security risk.
+
+10. Bootstrap program kya hota hai?
+    Computer on hone pe jo pehla program run hota hai woh bootstrap program hai. ROM/EEPROM mein stored. POST (Power-On Self Test) karta hai, 
+    hardware check karta hai, phir disk se OS bootloader load karta hai jo OS ko RAM mein load karta hai.
+    Interview Tip: Sequence: Power On → Bootstrap → POST → Bootloader → OS loads.
+
+11. Assembler ka kya function hota hai?
+    Assembler assembly language code ko machine code (binary/object code) mein convert karta hai.
+    Input = assembly instructions (.asm file).
+    Output = object code jo computer directly samjhe.
+    Compiler se alag — compiler high-level language translate karta hai.
+    Interview Tip: Chain: Source code → Compiler → Assembly → Assembler → Object code → Linker → Executable.
+
+12.  GUI kya hota hai?
+    Graphical User Interface — icons, windows, buttons ke through user computer se interact karta hai (mouse/touch).
+    CLI (Command Line Interface) ka alternative. OS ke upper layer pe hota hai. Windows, macOS, Android sab GUI OS hain.
+    Interview Tip: GUI vs CLI: GUI = easy but slow. CLI = hard but powerful (developers prefer CLI).
+
+13. Cycle Stealing kya hota hai?
+    DMA ka ek mode — I/O controller CPU se ek memory bus cycle "churaata" hai briefly RAM access ke liye, bina CPU ko interrupt kiye.
+    CPU ek cycle ke liye memory access nahi kar pata lekin completely stop nahi hota. Isse I/O aur CPU kaam saath karte hain efficiently.
+    Interview Tip: vs Full DMA: Cycle stealing = CPU partially runs. Full DMA = CPU completely idle during transfer.
+
+14. Multiprocessor system ke advantages kya hain?
+    Enhanced performance (workload split across CPUs), multiple applications simultaneously, multi-tasking within application, 
+    high throughput aur responsiveness, hardware sharing among CPUs (memory, I/O). Scalable systems build ho sakte hain.
+    Interview Tip: Types: Symmetric (sab CPU equal) vs Asymmetric (master-slave).
+
+15. Real-time systems kya hote hain?
+    Response time guaranteed hona chahiye within specific deadline. 2 types: Hard real-time (deadline miss = system failure, jaise pacemaker,
+    airbag) aur Soft real-time (deadline miss = degraded performance, jaise video streaming). Special scheduling algorithms use hote hain. 
+    Interview Tip: Hard vs Soft: Hard = life or death. Soft = inconvenient but not fatal.
+
+16. What are OS problems without an OS?
+    Bina OS ke: Poor resource management (koi CPU/memory management nahi), No user interface, No file system (data organize nahi),
+    No networking, No error handling. Essentially impossible for normal users to use the computer.
+    Interview Tip: Summary: OS = baaki sab kuch possible banata hai. Bina OS ke = raw hardware sirf developers use kar sakte.
+     
+
+
+
+    
+
+    
+

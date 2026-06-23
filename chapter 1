@@ -1,7 +1,0 @@
-1. What is a process and process table?
-A process is an instance of a program in execution. For example, a Web Browser is a process, and a shell (or command prompt) is a process. 
-The operating system is responsible for managing all the processes that are running on a computer and allocates each process a certain 
-amount of time to use the processor. In addition, the operating system also allocates various other resources that processes will need, 
-such as computer memory or disks. To keep track of the state of all the processes, the operating system maintains a table known as the 
-process table. Inside this table, every process is listed along with the resources the process is using and the current state of the process.
-
