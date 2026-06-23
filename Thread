@@ -1,0 +1,39 @@
+1.  Thread kya hota hai?
+    Thread ek process ke andar ek chhota execution path hai. Jaise MS Word mein ek thread typing handle karta hai,
+    doosra spell-check karta hai — dono ek hi process ke part hain aur memory share karte hain.
+    Interview Tip: One liner: Process = full gaana, Thread = ek instrument us gaane mein.
+
+2.  Process aur Thread mein kya difference hai?
+    Process apna khud ka memory space rakhta hai, isolated hota hai, aur heavy hota hai. Thread ek process ke andar hota hai,
+    memory share karta hai, lightweight hota hai aur faster communicate karta hai. Context switch bhi thread mein fast hota hai.
+    Interview Tip: Interview mein: "Process = alag flat, Thread = ek flat mein roommates."
+
+3.  Multithreaded programming ke kya benefits hain?
+    Application responsive rehta hai (ek thread block ho toh doosra chalta rehta hai), resources efficiently use hote hain kyunki
+    memory share hoti hai, multicore CPUs ka pura fayda milta hai, aur server performance better hoti hai.
+    Interview Tip: 4 benefits yaad karo: Responsive, Resource-sharing, Multicore, Server-speed.
+
+4.  Multithreading ke advantages kya hain?
+    Improved throughput, efficient multiprocessor use, better responsiveness (UI freeze nahi hoti), enhanced server performance
+    (ek slow request doosro ko block nahi karta), lower resource usage (shared memory), faster thread-to-thread communication.
+    Interview Tip: 6 benefits: Throughput, Multicore, Responsive, Server, Resource, Speed.
+
+5.  Multithreading vs Multitasking mein kya fark hai?
+    Multithreading = ek process ke andar multiple threads. Lightweight, memory share. Process ki feature. 
+    Multitasking = multiple processes/programs concurrently. Heavyweight. OS ki feature. Dono CPU switching use karte hain 
+    but different level pe.
+    Interview Tip: Level difference: Multithreading = inside process. Multitasking = between processes.
+
+6.  User-level aur Kernel-level threads mein kya fark hai?
+    User-level: User space mein implement, OS nahi jaanta, fast context switch, no hardware support needed.
+    BUT ek thread block ho toh poora process block.
+    Kernel-level: OS implement karta hai, OS aware hai, ek block ho dusra chale, lekin context switch slow.
+    Interview Tip: Modern OS: Hybrid use karta hai — N:M model. Java threads = kernel-level on most OS.
+
+7.  User-level thread block hone pe kya hota hai?
+    User-level thread agar blocking system call kare toh poora process block ho jaata hai — OS sirf process ko jaanta hai,
+    individual threads ko nahi. Isliye many-to-one model mein ek thread ki blocking operation se sab suffer karte hain.
+    Kernel-level threads mein aisa nahi hota.
+    Interview Tip: Solution: Jacketing = blocking call ko non-blocking version mein wrap karo, ya kernel threads use karo.
+    
+
