@@ -6,7 +6,7 @@
 2.  Process ke different states kya hote hain?
     5 states hote hain: New (naya process ban raha hai), Ready (CPU milne ka wait kar raha), Running (CPU use ho raha hai),
     Waiting/Blocked (I/O ka wait kar raha), Terminated (khatam ho gaya). Ek waqt mein sirf ek process Running state mein ho sakta hai.
-    Interview Tip: Trick: N-R-R-W-T → "Nana Rote Rahte, Wait karte, The."
+    Interview Tip: Trick: N-R-R-W-T.
 
 3.  Context Switching kya hota hai?
     Jab CPU ek process se doosre process pe switch karta hai, toh purane process ki state (registers, PC) PCB mein save hoti hai,
