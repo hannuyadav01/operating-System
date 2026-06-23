@@ -1,0 +1,55 @@
+1.  CPU Scheduling ke goals kya hote hain?
+    5 goals: Max CPU utilization (CPU hamesha busy rahe), Max throughput (zyada processes complete hon),
+    Min turnaround time (process shuru se khatam tak ka total time), Min waiting time (ready queue mein wait),
+    Min response time (pehla output jaldi aaye).
+    Interview Tip: MMMMM: Max util, Max throughput, Min turnaround, Min wait, Min response.
+
+2.  Different scheduling algorithms kaunse hain?
+    6 main algorithms: FCFS (First Come First Served), SJN/SJF (Shortest Job Next), Priority Scheduling, SRT (Shortest Remaining Time),
+    Round Robin (RR), aur Multilevel Queue Scheduling.
+    Interview Tip: Mnemonic: "Factory Schedules Production, Short Runs Round."
+
+3.  FCFS scheduling kya hota hai?
+    Pehle aaya, pehle CPU milega. Jo process ready queue mein pehle aai, usse CPU milta hai. Non-preemptive hai — 
+    ek baar CPU mila toh process khud chhode ya block ho tab tak CPU uske paas rahega.
+    Problem: agar lamba kaam pehle aagaya toh chhhote kaam zyada wait karenge (Convoy effect).
+    Interview Tip: Drawback yaad rakho: Convoy effect = highway pe slow truck ke peeche sab stuck.
+
+4.  Round Robin scheduling kya hota hai?
+    Har process ko ek fixed time slice (quantum) milta hai. Time khatam? Process preempt ho jaata hai aur queue ke end mein chala jaata hai.
+    Cyclic nature ki wajah se starvation nahi hoti. Time-slicing scheduling bhi kahte hain.
+    Interview Tip: Key point: RR = FCFS + preemption. Quantum size critical hai — bahut chota toh overhead, bahut bada toh FCFS jaisa.
+
+5.  Preemptive aur Non-preemptive scheduling mein kya fark hai?
+    Preemptive mein CPU kisi bhi waqt process se liya ja sakta hai (jaise RR, Priority). Non-preemptive mein process CPU khud chhode ya
+    block ho tab tak CPU rakhe (jaise FCFS, SJF). Preemptive zyada flexible hai but overhead zyada hota hai.
+    Interview Tip: Easy remember: Pre = OS le sakta hai forcefully. Non-pre = process khud hi dega.
+
+6.  Dispatcher aur Dispatch Latency kya hota hai?
+    Dispatcher wo module hai jo scheduled process ko actually CPU deta hai — context switch karta hai, user mode mein jaata hai,
+    correct location pe jump karta hai. Dispatch Latency = ek process stop hone se doosre process ka pehla instruction execute hone
+    tak ka time.
+    Interview Tip: Scheduler = decide karta hai. Dispatcher = actually karta hai.
+
+7.  Starvation aur Aging kya hote hain OS mein?
+    Starvation = ek process bahut zyada time tak CPU nahi milta kyunki high-priority processes baar baar aate rehte hain.
+    Aging = solution — time ke saath process ki priority badhate rehte hain taaki wo eventually CPU paaye.
+    Interview Tip: Analogy: Starvation = token number 50 wala patient wait karta hi rehta. Aging = token number ke saath urgency badhti hai.
+
+8.  Preemptive Multitasking kya hota hai?
+    OS programs ko forcefully preempt kar sakta hai — CPU le sakta hai process se bina permission ke, based on time quantum ya priority.
+    Modern OS sab preemptive hain. Non-preemptive mein process khud hi CPU chhodta hai.
+    Interview Tip: Modern OS = always preemptive. Windows, Linux, macOS sab preemptive multitasking use karte hain.
+
+9.  Dispatch latency mein kya include hota hai?
+    Dispatch Latency = current process ko stop karne ka time + new process ko start karne ka time. Iske andar: context switch overhead,
+    mode switch (kernel to user), aur correct memory location pe jump. Real-time systems mein ye minimize karna critical hota hai.
+    Interview Tip: Low latency = responsive system. Real-time OS mein dispatch latency typically nanoseconds mein hoti hai.
+
+10.  What is preemptive multitasking?
+     OS programs ki CPU time control karta hai — process ko forcefully preempt kar sakta hai predefined criteria ke basis pe
+     (time quantum, priority). Programs ko cooperate nahi karna — OS automatically switch karta hai. Modern OS standard.
+     Interview Tip: Windows 3.1 = cooperative. Windows 95+ = preemptive.
+
+    
+
