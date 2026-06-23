@@ -1,0 +1,35 @@
+1.  Process kya hota hai aur process table kya hai?
+    Process = program jo currently RAM mein run ho raha hai. Jaise Chrome open hai toh ek process hai. 
+    Process Table ek registry hai jisme OS saare running processes ka record rakhta hai — unki state, memory, CPU registers sab.
+    Interview Tip: One liner: Program = recipe (disk pe), Process = khana bante waqt (RAM mein).
+
+2.  Process ke different states kya hote hain?
+    5 states hote hain: New (naya process ban raha hai), Ready (CPU milne ka wait kar raha), Running (CPU use ho raha hai),
+    Waiting/Blocked (I/O ka wait kar raha), Terminated (khatam ho gaya). Ek waqt mein sirf ek process Running state mein ho sakta hai.
+    Interview Tip: Trick: N-R-R-W-T → "Nana Rote Rahte, Wait karte, The."
+
+3.  Context Switching kya hota hai?
+    Jab CPU ek process se doosre process pe switch karta hai, toh purane process ki state (registers, PC) PCB mein save hoti hai,
+    aur naye process ki state load hoti hai. Ye kaam kuch overhead leta hai — isi liye thread switching process switching se fast hoti hai.
+    Interview Tip: Sochlo: Paused game ka save = context save. Load = context restore.
+
+4.  PCB (Process Control Block) kya hota hai?
+    PCB ek data structure hai jo har process ki puri info rakhta hai — PID, state, program counter, CPU registers, memory info, 
+    I/O info, accounting info. Process table = array of PCBs.
+    Interview Tip: PCB = process ka Aadhaar card — sari info ek jagah.
+
+5.  Program aur Process mein kya difference hai?
+    Program ek static entity hai jo disk pe pada hota hai — instructions ka collection. Process ek dynamic entity hai — 
+    wo program jo RAM mein load hokar execute ho raha hai. Ek program se multiple processes ban sakti hain.
+    Interview Tip: Program = recipe (stored), Process = khana bante waqt (active).
+
+6.  Zombie process kya hota hai?
+    Jab ek child process execution complete kar leta hai lekin parent process abhi uska exit status read nahi kar paya,
+    toh wo process zombie hoti hai. Process table mein entry hoti hai lekin actually run nahi hoti.
+    Parent jab wait() call karta hai toh entry remove hoti hai.
+    Interview Tip: Real analogy: Zombie = employee ne resign kar diya, exit formalities pending hain.
+
+7.  Orphan process kya hota hai?
+    Jab parent process child se pehle terminate ho jaata hai, toh child ko orphan kehte hain.
+    Linux mein init process (PID 1) aisa orphan processes ko adopt kar leta hai.
+    Interview Tip: Yaad rakho: Zombie = child finished, parent busy. Orphan = parent gone, child alive.
