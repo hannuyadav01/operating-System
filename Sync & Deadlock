@@ -1,0 +1,7 @@
+1.  Concurrency kya hota hai?
+    Multiple processes/threads ek hi time period mein exist karte hain aur potentially interact karte hain. Yeh actually parallel nahi
+    bhi ho sakta — single CPU pe time-sharing se bhi concurrency hoti hai. Concurrency se race conditions aur deadlocks jaisi problems
+    aati hain.
+    Interview Tip: Concurrency ≠ Parallelism: Concurrency = multiple tasks manage karo. Parallel = actually ek saath run.
+
+2.  
