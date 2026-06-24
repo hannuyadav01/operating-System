@@ -1,0 +1,157 @@
+1.  Thrashing kab hota hai?
+    Thrashing tab hota hai jab system zyada waqt page faults handle karne mein lagata hai aur actual kaam kam hota hai.
+    CPU utilization girne lagti hai. Cause = too many processes, not enough memory. Solution = reduce multiprogramming 
+    degree ya working set model use karo.
+    Interview Tip: Yaad rakho: Thrashing = OS page swap karne mein itna busy ki actual kaam band.
+
+2.  Virtual memory kya hota hai?
+    Virtual memory ek illusion create karta hai ki RAM bahut badi hai. Disk ka kuch part (swap space) RAM ki tarah use hota hai.
+    Process ko lagta hai poori memory uske liye hai, actually OS pages swap karta rehta hai as needed.
+    Interview Tip: Formula: Virtual Memory = RAM + Swap Space on Disk.
+
+3.  Demand Paging kya hota hai aur kaise kaam karta hai?
+    Pages tabhi memory mein load hote hain jab unki zaroorat hoti hai (on demand). Process shuru hoti hai bina poori memory load kiye.
+    Jab page chahiye aur RAM mein nahi (page fault), OS disk se load karta hai. Efficient but page faults slow hote hain.
+    Interview Tip: Steps: Access → Page fault → OS loads page → Execution resumes.
+
+4.  Paging ka basic function kya hai?
+    Paging = non-contiguous memory allocation technique. Secondary memory pages mein divided, main memory frames mein divided.
+    Har process ke pages available frames mein load hote hain — contiguous hona zaruri nahi. Internal fragmentation ho sakti hai.
+    Interview Tip: Key terms: Pages = secondary memory chunks. Frames = RAM chunks (same size).
+
+5.  Fragmentation kya hota hai?
+    Memory mein chhote chhote unused gaps ban jaate hain jo itne chhhote hain ki kisi process ko allocate nahi ho sakte.2 types:
+    Internal (allocated memory se zyada di di, extra waste) aur External (free memory hai but scattered hai, contiguous block nahi banta).
+    Interview Tip: Internal: Paging se hoti hai. External: Variable-size allocation se hoti hai.
+
+6.  Internal aur External Fragmentation mein kya fark hai?
+    Internal: Process ko zyada memory allocate ho gayi — allocated block ke andar waste space. Solution: best-fit.
+    External: Total free memory enough hai but contiguous block nahi — scattered hai. Solution: compaction, paging, segmentation.
+    Interview Tip: Simple: Internal = andar waste. External = bahar scattered waste.
+
+7.  Swapping kya hota hai?
+    Blocked processes ko RAM se disk (backing store) par temporarily move karna = swap out. Jab zarurat ho toh wapas RAM mein = swap in.
+    Isse zyada processes run ho sakti hain jinhe currently RAM mein fit hona mushkil hota.
+    Interview Tip: Analogy: Library mein kam use ki kitabein store room mein rakho, jagah free karo nayi ke liye.
+
+8.  Dynamic Loading kya hota hai?
+    Routines tabhi memory mein load hote hain jab unhe call kiya jaye. Jo routines kabhi call nahi hote (jaise error handlers) wo kabhi
+    load nahi hote. Memory efficiently use hoti hai — poora program pehle se load nahi hota.
+    Interview Tip: vs Demand Paging: Dynamic loading = programmer decide karta hai. Demand paging = OS decide karta hai.
+
+9.  Overlays kya hote hain?
+    Purana technique: program ke jo parts ek saath chahiye nahi woh ek doosre ko replace karte hain memory mein. Pehle wala part unload,
+    naya load. Ab virtual memory ki wajah se ye technique obsolete hai.
+    Interview Tip: Yaad rakho: Overlays = programmer manually memory manage karta tha. Ab OS karta hai.
+
+10. Logical aur Physical address mein kya fark hai?
+    Logical address = CPU generate karta hai (virtual address), user dekh sakta hai. Physical address = actual RAM location,
+    user nahi dekh sakta. MMU (Memory Management Unit) logical ko physical mein convert karta hai.
+    Interview Tip: Easily: Logical = map pe address. Physical = actual jagah.
+
+11. Address Binding kya hota hai?
+    Program ke instructions aur data ko actual physical memory locations se associate karna = address binding.
+    3 types: Compile-time (pehle se fixed), Load-time (jab load ho), Execution-time (runtime pe, relocation possible).
+    Interview Tip: 3 times: Compile → Load → Execute. Modern OS execution-time binding use karta hai.
+
+12. Memory Management ke goals kya hain?
+    5 goals: Relocation (process ko koi bhi memory location pe rakho), Protection (ek process doosre ki memory access na kare), 
+    Sharing (common code share karo), Logical organization (code/data alag), Physical organization (RAM aur disk ke beech management).
+    Interview Tip: RPSLO: Relocation, Protection, Sharing, Logical, Organization.
+
+13. Best page size kya hota hai?
+    Koi ek fixed "best" page size nahi hoti — system pe depend karta hai. Factors: page table size, paging overhead, fragmentation,
+    disk I/O efficiency. Trade-off hai — bada page = less overhead but more internal fragmentation.
+    Interview Tip: Interview answer: "It depends on the workload — typically 4KB to 64KB in modern systems."
+
+14. Compaction kya hota hai?
+    External fragmentation solve karne ka ek tarika — scattered free memory blocks ko move karke ek bada contiguous block banana.
+    Time-consuming process hai. Paging aur segmentation better alternatives hain.
+    Interview Tip: Analogy: Wardrobe mein sab shuffle karo taaki ek side pe saari jagah aajaye.
+
+15. Paging aur Segmentation mein kya fark hai?
+    Paging: fixed-size pages, OS handle karta hai, invisible to user, internal fragmentation, faster.
+    Segmentation: variable-size segments (code, stack, data), compiler handle karta hai, visible to user, external fragmentation,
+    slower. Modern OS dono combine karte hain.
+    Interview Tip: Key: Paging = OS ke liye. Segmentation = programmer ke liye (logical divisions).
+
+16. Virtual memory ke advantages kya hain?
+    Programs physical RAM se bade ho sakte hain, zyada multiprogramming possible hai, external fragmentation eliminate hoti hai,
+    memory allocation easy aur cheap hoti hai, programs apne poore code ke bina run kar sakte hain.
+    Interview Tip: Main benefit: RAM se bade programs chalao, cheaply.
+
+17. Locality of Reference kya hota hai?
+    Programs ka tendency hai ki thode time ke liye same memory locations access karte hain (temporal locality) ya physically nearby
+    memory access karte hain (spatial locality). Cache aur virtual memory isi principle pe kaam karte hain.
+    Interview Tip: 2 types: Temporal = same location baar baar. Spatial = nearby locations.
+
+18. Associative Memory aur Cache Memory mein kya fark hai?
+    Associative Memory: content se access hoti hai (address se nahi). Bahut fast search.
+    Cache Memory: address se access hoti hai,but RAM se fast. Cache frequently used data store karta hai.
+    Associative memory TLB (Translation Lookaside Buffer) mein use hoti hai.
+    Interview Tip: TLB yaad rakho: TLB = associative memory jo page table entries cache karta hai.
+
+19. Caching kya hota hai?
+    Cache ek chhoti, fast memory hai jo frequently used data copy rakhti hai taaki main memory tak baar baar na jaana pade.
+    CPU mein L1/L2/L3 cache hoti hai. Cache miss hone pe data main memory se fetch hota hai.
+    Interview Tip: Hierarchy: CPU Registers > L1 Cache > L2 Cache > L3 > RAM > Disk.
+
+20. Buffer kya hota hai?
+    Buffer ek memory area hai jo do devices ya device aur application ke beech data temporarily store karta hai jab unki speeds
+    different hain. Jaise printer buffer — CPU fast hai, printer slow, buffer mein data aata hai pehle.
+    Interview Tip: vs Cache: Buffer = speed mismatch handle. Cache = frequently accessed data store.
+
+21. Spooling kya hota hai?
+    SPOOL = Simultaneous Peripheral Operations On-Line. Jobs ek buffer (disk pe) mein store hote hain before peripheral device pe jaate hain.
+    Printer ka classic example — multiple print jobs spool mein queue hote hain. CPU block nahi hota.
+    Interview Tip: Real example: Print queue = spooling. CPU kaam karta rehta hai.
+
+22. Hashed Page Table ke advantages aur disadvantages kya hain?
+    Advantages: Synchronization efficient, faster than search trees for lookup, widely used in software (associative arrays, DB indexing,
+    caches). Disadvantages: Hash collisions practically unavoidable (need collision resolution), inefficient with many collisions,
+    null values supported nahi.
+    Interview Tip: Use case: Large address spaces mein regular page table bahut badi hogi — hashed page table efficient alternative.
+
+23. Dynamic memory allocation ke advantages kya hain?
+    Jab memory requirement pehle se pata nahi. Data structures without upper limit. Memory efficiently use hoti hai — sirf utni lo jitni
+    chahiye. Linked lists aur trees ke liye must. Runtime pe size change possible.
+    Interview Tip: Static vs Dynamic: Static = compile time size fixed. Dynamic = runtime pe decide.
+
+24. Belady's Anomaly kya hota hai?
+    Usually zyada page frames = kam page faults. Lekin FIFO page replacement mein kabhi kabhi zyada frames dene se page faults badh
+    jaate hain — yeh Belady's anomaly hai. LRU aur Optimal page replacement algorithms mein ye anomaly nahi hoti.
+    Interview Tip: Simple: FIFO mein zyada memory = more faults (sometimes). FIFO avoid karo — LRU prefer karo.
+
+25. Virtual memory ka performance kaise calculate karte hain?
+    Effective Access Time = (1-p) × Memory access time + p × Page fault time. Jahan p = page fault probability. p bahut chhota hona
+    chahiye nahi toh performance bahut kharab ho jaati hai. Page fault service time = multiple milliseconds (disk involved).
+    Interview Tip: Formula yaad karo: EAT = (1-p)*memory_time + p*page_fault_time.
+
+26. Locality of Reference virtual memory mein kaise help karta hai?
+    Kyunki programs thodi si memory ko baar baar access karte hain (working set), virtual memory efficient rahti hai — sirf wo pages
+    RAM mein raho jo actually use ho rahe hain. Working set model pe based scheduling thrashing reduce karta hai.
+    Interview Tip: Working Set Model: Track karo kaunse pages recently use hue aur woh pages RAM mein rakho.
+
+27. Address binding ke types kya hain?
+    3 types: Compile-time (compiler physical address embed kar deta hai — address change nahi ho sakta, rare),
+    Load-time (loader assign karta hai jab program load ho — relocatable code),
+    Execution-time (runtime pe translate hota hai MMU ke through — modern OS yahi use karta hai, allows relocation).
+    Interview Tip: Modern OS = always Execution-time binding kyunki process ko memory move karni pad sakti hai.
+
+28. Swapping vs Paging mein kya fark hai?
+    Swapping = poori process ko RAM se disk move karo. Slow but complete. Paging = specific pages move karo as needed. Fine-grained,
+    faster, modern approach. Virtual memory paging use karta hai, swapping nahi (though swap space exist karta hai as fallback).
+    Interview Tip: Modern Linux: "swap" technically page-level swapping hai — full process swap modern OS mein rare hai.
+
+29. Hashed page table kab use karte hain?
+    Large address spaces ke liye (jaise 64-bit systems) jahan regular page table bahut badi ho jaaye. Virtual page number hash table
+    mein index karta hai. Chaining handle karta hai collisions ko. Inverted page table ek aur alternative hai — physical frame per 
+    entry rakhta hai instead of virtual page per entry.
+    Interview Tip: Interview angle: 64-bit address space mein regular page table = terabytes. Hashed ya inverted PT = practical solution.
+
+30. Multiprogramming degree aur thrashing mein kya relationship hai?
+    Multiprogramming degree badhao toh CPU utilization badhti hai — ek point tak. Uske baad processes ke paas enough frames nahi hote,
+    page faults badh jaate hain, CPU busy pagine swap karne mein, aur utilization crash ho jaati hai. Ye thrashing hai.
+    Working set model se optimal degree find karo.
+    Interview Tip: Graph shape: CPU utilization = bell curve vs degree of multiprogramming. Thrashing = right side crash.
+    
